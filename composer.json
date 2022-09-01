@@ -1,0 +1,21 @@
+{
+    "name": "hexlet/code",
+    "type": "project",
+    "authors": [
+        {
+            "name": "VaLeraGav",
+            "email": "deliciiouss@yandex.ru"
+        }
+    ],
+    "autoload": {
+        "files": [
+        ],
+        "psr-4": {
+            "Hexlet\\Code\\": "src/"
+        }
+    },
+    "require": {
+    },
+    "require-dev": {
+    }
+}
