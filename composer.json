@@ -10,7 +10,8 @@
     "autoload": {
         "files": [
             "src/genDiff.php",
-            "src/Parsers.php"
+            "src/Parsers.php",
+            "src/Formatter.php"
         ],
         "psr-4": {
             "Differ\\Tests\\": "tests",

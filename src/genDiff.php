@@ -8,7 +8,7 @@ function genDiff($firstFilePath, $secondFilePath)
 {
     $arrayFirst = parser($firstFilePath);
     $arraySecond = parser($secondFilePath);
-    
+
     $result = diffData($arrayFirst, $arraySecond);
     return $result;
 }
@@ -39,8 +39,13 @@ function diffData($arrayFirst, $arraySecond)
             $arrayResult["  + {$key}"] = $value;
         }
     }
+    return toString($arrayResult);
+}
+
+function toString(array $array): string
+{
     $string = '';
-    foreach ($arrayResult as $key => $value) {
+    foreach ($array as $key => $value) {
         $string .= "{$key}: {$value}\n";
     }
     return "{\n{$string}}\n";

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true" stopOnFailure="false">
+    <!-- stopOnFailure "true" чтобы остановит ваш тестовый набор при первой ошибке  -->
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </coverage>
+    <!-- <logging>
+        <junit outputFile="build/unit_report.xml"/>
+    </logging> -->
+
+    <testsuites>
+        <testsuite name="Tests">
+            <!-- имя папки -->
+            <directory suffix="Test.php">tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+
+
+<!--! выводит ошибку 
+- Element 'log': This element is not expected..
+- Your XML configuration validates against a deprecated schema.
+-->
+
+<!-- <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">./app</directory>
+    </whitelist>
+</filter> -->
+
+<!-- <coverage processUncoveredFiles="true">
+    <include>
+        <directory suffix=".php">./app</directory>
+    </include>
+</coverage> -->
+
+<!-- изменено в PHPUnit 9.3. -->
+<!-- <log type="junit" target="build/unit_report.xml"/>  -> <junit outputFile="build/unit_report.xml"/> -->
