@@ -32,16 +32,6 @@ function diffData($arrayFirst, $arraySecond)
                 $value = 'false';
             }
         }
-        // if (is_array($value) && $value[0] === $value[1]) {
-        //     $arrayResult["    {$key}"] = $value[0];
-        // } elseif (is_array($value) && $value[0] !== $value[1]) {
-        //     $arrayResult["  - {$key}"] = $value[0];
-        //     $arrayResult["  + {$key}"] = $value[1];
-        // } elseif (!array_key_exists($key, $arraySecond)) {
-        //     $arrayResult["  - {$key}"] = $value;
-        // } else {
-        //     $arrayResult["  + {$key}"] = $value;
-        // }
         if (array_key_exists($key, $arrayFirst) && array_key_exists($key, $arraySecond)) {
             if ($value[0] === $value[1]) {
                 $arrayResult["    {$key}"] = $value[0];
@@ -55,12 +45,6 @@ function diffData($arrayFirst, $arraySecond)
             $arrayResult["  + {$key}"] = $value;
         }
     }
-
-    // $result = str_replace('"', '', json_encode($arrayResult));
-    // $result = str_replace('{', "{\n  ", $result);
-    // $result = str_replace('}', "\n}", $result);
-    // $result = str_replace(",", "\n  ", $result);
-    // $result = str_replace(":", ": ", $result);
 
     $string = '';
     foreach ($arrayResult as $key => $value) {
