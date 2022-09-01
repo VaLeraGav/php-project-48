@@ -2,19 +2,13 @@
 
 namespace Differ\Differ;
 
-function readFile($filePath)
-{
-    if (!file_exists($filePath)) {
-        throw new \Exception("The file {$filePath} does not exists.\n");
-    }
-    return file_get_contents($filePath);
-}
+use function Differ\Parser\parser;
 
 function genDiff($firstFilePath, $secondFilePath)
 {
-    $arrayFirst = json_decode(readFile($firstFilePath), true);
-    $arraySecond = json_decode(readFile($secondFilePath), true);
-
+    $arrayFirst = parser($firstFilePath);
+    $arraySecond = parser($secondFilePath);
+    
     $result = diffData($arrayFirst, $arraySecond);
     return $result;
 }
@@ -45,14 +39,12 @@ function diffData($arrayFirst, $arraySecond)
             $arrayResult["  + {$key}"] = $value;
         }
     }
-
     $string = '';
     foreach ($arrayResult as $key => $value) {
         $string .= "{$key}: {$value}\n";
     }
-    return "{\n{$string}}";
+    return "{\n{$string}}\n";
 }
-
 
 // $a = '../testFile/filePlain1.json';
 // $b = '../testFile/filePlain2.json';

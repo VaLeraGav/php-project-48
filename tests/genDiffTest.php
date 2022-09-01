@@ -18,14 +18,14 @@ class genDiffTest extends TestCase
         $this->assertNotSame($inCorrectDiff, $result1);
     }
 
-    // public function testGetDiffYml()
-    // {
-    //     $correctDiff = file_get_contents(__DIR__ . '/fixtures/correctDiffYml');
-    //     $result1 = genDiff(__DIR__ . "/../TestFile/fileTest1.yaml", __DIR__ . "/../TestFile/fileTest2.yaml");
-    //     $this->assertEquals($correctDiff, $result1);
+    public function testGetDiffYml()
+    {
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/correctDiffYml');
+        $result1 = genDiff(__DIR__ . "/../TestFile/fileTest1.yaml", __DIR__ . "/../TestFile/fileTest2.yaml");
+        $this->assertEquals($correctDiff, $result1);
 
-    //     $inCorrectDiff = "{incorrect:yaml}";
-    //     $this->assertNotSame($inCorrectDiff, $result1);
-    // }
+        $inCorrectDiff = "{incorrect:yaml}";
+        $this->assertNotSame($inCorrectDiff, $result1);
+    }
 
 }
