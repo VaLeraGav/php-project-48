@@ -9,12 +9,14 @@
     ],
     "autoload": {
         "files": [
+            "src/genDiff.php"
         ],
         "psr-4": {
             "Hexlet\\Code\\": "src/"
         }
     },
     "require": {
+        "docopt/docopt": "^1.0"
     },
     "require-dev": {
     }
