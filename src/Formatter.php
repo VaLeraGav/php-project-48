@@ -2,6 +2,8 @@
 
 namespace Differ\Formatter;
 
-function formatter($data, $tree)
+function future($data, $tree)
 {
+    
+
 }

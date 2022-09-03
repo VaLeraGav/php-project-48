@@ -2,20 +2,24 @@
 
 namespace Differ\Differ;
 
-use function Differ\Formatter\formatter;
+use function  Differ\Formatters\Stylish\formatter;
 use function Differ\Parsers\parser;
 use function Differ\Build\diffData;
+use function Differ\Build\toString;
+use function Differ\TestStylish\builder;
 
 function genDiff($firstFilePath, $secondFilePath, $format = 'stylish')
 {
     $arrayFirst = parser($firstFilePath);
     $arraySecond = parser($secondFilePath);
 
-    $result = diffData($arrayFirst, $arraySecond);
+    // $result = diffData($arrayFirst, $arraySecond);
+    $result = builder($arrayFirst, $arraySecond);
 
     //! нужно аккуратнее 
-    // $formatResult = formatter($result);
-    return $result;
+    $resultFor = formatter($result);
+    $resToString = toString($resultFor);
+    return  $resToString;
 }
 
 

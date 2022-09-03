@@ -12,12 +12,13 @@
             "src/genDiff.php",
             "src/Parsers.php",
             "src/Formatter.php",
-            "src/Build.php"
-        ],
-        "psr-4": {
-            "Differ\\Tests\\": "tests",
-            "Differ\\": "src"
-        }
+            "src/Build.php",
+            "src/TestStylish.php",
+            "src/formatters/Stylish.php",
+            "src/formatters/Json.php",
+            "src/formatters/Plain.php"
+
+        ]
     },
     "bin": [
         "bin/gendiff"

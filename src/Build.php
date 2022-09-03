@@ -31,11 +31,19 @@ function diffData($arrayFirst, $arraySecond)
     return toString($arrayResult);
 }
 
-function toString(array $array): string
+// function toString(array $array): string
+// {
+//     $string = '';
+//     foreach ($array as $key => $value) {
+//         $string .= "{$key}: {$value}\n";
+//     }
+//     return "{\n{$string}}\n";
+// }
+
+
+function toString(array $formattedArray): string
 {
-    $string = '';
-    foreach ($array as $key => $value) {
-        $string .= "{$key}: {$value}\n";
-    }
-    return "{\n{$string}}\n";
+    $result = str_replace('"', '', json_encode($formattedArray, JSON_PRETTY_PRINT));
+    $result = str_replace(",", "", $result);
+    return $result;
 }
