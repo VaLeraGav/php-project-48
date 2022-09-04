@@ -2,6 +2,8 @@
 
 namespace Differ\Formatters\Plain;
 
-function formatter()
+function formatter(array $data)
 {
+
+
 }

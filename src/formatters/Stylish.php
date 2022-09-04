@@ -19,5 +19,16 @@ function formatter(array $data): array
             $result["{$unit['name']}"] = formatter($unit['child']);
         }
     }
+    // переделывать 
+
+
+    // return toString($result);
     return $result;
 }
+
+// function toString(array $formattedArray): string
+// {
+//     $result = str_replace('"', '', json_encode($formattedArray, JSON_PRETTY_PRINT));
+//     $result = str_replace(",", "", $result);
+//     return $result;
+// }

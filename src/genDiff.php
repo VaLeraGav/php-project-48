@@ -5,8 +5,9 @@ namespace Differ\Differ;
 use function  Differ\Formatters\Stylish\formatter;
 use function Differ\Parsers\parser;
 use function Differ\Build\diffData;
-use function Differ\Build\toString;
+// use function Differ\Build\toString;
 use function Differ\TestStylish\builder;
+use function Differ\Formatters\format;
 
 function genDiff($firstFilePath, $secondFilePath, $format = 'stylish')
 {
@@ -15,11 +16,14 @@ function genDiff($firstFilePath, $secondFilePath, $format = 'stylish')
 
     // $result = diffData($arrayFirst, $arraySecond);
     $result = builder($arrayFirst, $arraySecond);
+    
 
-    //! нужно аккуратнее 
-    $resultFor = formatter($result);
-    $resToString = toString($resultFor);
-    return  $resToString;
+    $formattedTree = format($format,$result);
+
+    // $resultFor = formatter($result);
+    // print_r($formattedTree);
+    // $resToString = toString($formattedTree);
+    return $formattedTree;
 }
 
 
