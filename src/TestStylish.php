@@ -23,19 +23,19 @@ function builder(object $arrayFirst, object $arraySecond): array
             $unit[$key] = [
                 'name' => $key,
                 'status' => 'not changed',
-                'value' => $arraySecond->$key
+                'value' => prepareValue($arraySecond->$key)
             ];
         } elseif (!property_exists($arrayFirst, $key)) {
             $unit[$key] = [
                 'name' => $key,
                 'status' => 'added',
-                'value' => $arraySecond->$key
+                'value' => prepareValue($arraySecond->$key)
             ];
         } elseif (!property_exists($arraySecond, $key)) {
             $unit[$key] = [
                 'name' => $key,
                 'status' => 'removed',
-                'value' => $arrayFirst->$key
+                'value' => prepareValue($arrayFirst->$key)
             ];
         } elseif (
             property_exists($arrayFirst, $key) &&
@@ -46,8 +46,8 @@ function builder(object $arrayFirst, object $arraySecond): array
             $unit[$key] = [
                 'name' => $key,
                 'status' => 'changed',
-                'newValue' => $arraySecond->$key,
-                'oldValue' => $arrayFirst->$key
+                'newValue' => prepareValue($arraySecond->$key),
+                'oldValue' => prepareValue($arrayFirst->$key)
             ];
         } else {
             if (is_object($arrayFirst->$key) && is_object($arraySecond->$key)) {
@@ -61,4 +61,19 @@ function builder(object $arrayFirst, object $arraySecond): array
     }
     return $unit;
 }
+
+// setting5 null?  
+function prepareValue($value)
+{
+    if (is_bool($value)) {
+        return $value ? 'true' : 'false';
+    }
+    if (is_null($value)) {
+        return 'null';
+    }
+    if (!is_object($value)) {
+        return $value;
+    }
+}
+
 

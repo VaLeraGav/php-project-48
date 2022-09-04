@@ -16,7 +16,7 @@ function genDiff($firstFilePath, $secondFilePath, $format = 'stylish')
 
     // $result = diffData($arrayFirst, $arraySecond);
     $result = builder($arrayFirst, $arraySecond);
-    
+    // print_r($result);
 
     $formattedTree = format($format,$result);
 
@@ -26,7 +26,3 @@ function genDiff($firstFilePath, $secondFilePath, $format = 'stylish')
     return $formattedTree;
 }
 
-
-// $a = '../testFile/filePlain1.json';
-// $b = '../testFile/filePlain2.json';
-// genDiff($a, $b);
