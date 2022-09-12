@@ -6,17 +6,25 @@ function formatter(array $data): array
 {
     $result = [];
     foreach ($data as $unit) {
-        if ($unit['status'] === 'not changed') {
-            $result["    {$unit['name']}"] = $unit['value'];
-        } elseif ($unit['status'] === 'added') {
-            $result["  + {$unit['name']}"] = $unit['value'];
-        } elseif ($unit['status'] === 'removed') {
-            $result["  - {$unit['name']}"] = $unit['value'];
-        } elseif ($unit['status'] === 'changed') {
-            $result["  - {$unit['name']}"] = $unit['oldValue'];
-            $result["  + {$unit['name']}"] = $unit['newValue'];
-        } elseif ($unit['status'] === 'nested') {
-            $result["    {$unit['name']}"] = formatter($unit['child']);
+        $status = $unit['status'];
+        
+        switch ($status) {
+            case 'unchanged':
+                $result["    {$unit['name']}"] = $unit['value'];
+                break;
+            case 'added':
+                $result["  + {$unit['name']}"] = $unit['value'];
+                break;
+            case 'removed':
+                $result["  - {$unit['name']}"] = $unit['value'];
+                break;
+            case 'changed':
+                $result["  - {$unit['name']}"] = $unit['oldValue'];
+                $result["  + {$unit['name']}"] = $unit['newValue'];
+                break;
+            case 'nested':
+                $result["    {$unit['name']}"] = formatter($unit['child']);
+                break;
         }
     }
     // переделывать 
