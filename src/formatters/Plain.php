@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Plain;
 
-function formatter(array $data, $ancestry = '')
+function formatter(array $data, string $ancestry = '')
 {
     $data = array_filter($data, fn ($unit) => $unit['status'] !== 'unchanged');
 
@@ -30,7 +30,7 @@ function formatter(array $data, $ancestry = '')
     return $result;
 }
 
-function checkArray($val)
+function checkArray($val): string
 {
     if (is_object($val)) {
         return "[complex value]";

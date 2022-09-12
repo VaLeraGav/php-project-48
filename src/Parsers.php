@@ -4,7 +4,7 @@ namespace Differ\Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function readFile($filePath): void
+function readFile(string $filePath): void
 {
     if (!file_exists($filePath)) {
         throw new \Exception("The file {$filePath} does not exists.\n");
@@ -16,6 +16,7 @@ function parser(string $path): object
     readFile($path);
     $splitPath = pathinfo($path);
     $format = $splitPath['extension'];
+
     switch ($format) {
         case 'json':
             return json_decode(file_get_contents($path), false);

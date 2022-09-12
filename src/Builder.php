@@ -6,7 +6,6 @@ namespace Differ\TestStylish;
 
 function builder(object $arrayFirst, object $arraySecond): array
 {
-    // $arrayMerge = get_object_vars($arrayFirst, $arraySecond);
     $keys = array_unique(array_merge(
         array_keys(get_object_vars($arrayFirst)),
         array_keys(get_object_vars($arraySecond))

@@ -12,7 +12,7 @@
             "src/genDiff.php",
             "src/Parsers.php",
             "src/Formatter.php",
-            "src/TestStylish.php",
+            "src/Builder.php",
             "src/formatters/Stylish.php",
             "src/formatters/Json.php",
             "src/formatters/Plain.php"
