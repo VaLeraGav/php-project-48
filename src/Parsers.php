@@ -20,11 +20,9 @@ function parser(string $path): object
     switch ($format) {
         case 'json':
             return json_decode(file_get_contents($path), false);
-            break;
         case 'yaml':
         case 'yml':
             return Yaml::parse(file_get_contents($path), Yaml::PARSE_OBJECT_FOR_MAP);
-            break;
         default:
             throw new \Exception("Data type '{$format}' is incorrect or not supported.");
     }

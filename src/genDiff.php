@@ -14,6 +14,5 @@ function genDiff(string $firstFilePath, string $secondFilePath, string $format =
     $result = builder($arrayFirst, $arraySecond);
 
     $formattedTree = format($format, $result);
-
     return $formattedTree;
 }

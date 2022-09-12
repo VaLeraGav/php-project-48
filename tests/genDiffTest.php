@@ -80,15 +80,15 @@ class genDiffTest extends TestCase
 
     // ______________Plain________________
 
-    // public function testGetDiffSimplePlainToJson()
-    // {
-    //     $result1 = genDiff(__DIR__ . "/../testFile/simple10.json", __DIR__ . "/../testFile/simple20.json", 'plain');
-    //     print_r($result1);
-    // }
+    public function testGetDiffSimplePlainToJson()
+    {
+        $result1 = genDiff(__DIR__ . "/../testFile/simple10.json", __DIR__ . "/../testFile/simple20.json", 'plain');
+        print_r($result1);
+    }
 
-    // public function testGetDiffDeepPlainToJson()
-    // {
-    //     $result1 = genDiff(__DIR__ . "/../testFile/deep1.json", __DIR__ . "/../testFile/deep2.json", 'plain');
-    //     print_r($result1);
-    // }
+    public function testGetDiffDeepPlainToJson()
+    {
+        $result1 = genDiff(__DIR__ . "/../testFile/deep1.json", __DIR__ . "/../testFile/deep2.json", 'plain');
+        print_r($result1);
+    }
 }
