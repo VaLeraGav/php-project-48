@@ -22,7 +22,6 @@ function parser(string $path): object
             break;
         case 'yaml':
         case 'yml':
-            // return Yaml::parseFile($path);
             return Yaml::parse(file_get_contents($path), Yaml::PARSE_OBJECT_FOR_MAP);
             break;
         default:

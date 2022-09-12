@@ -22,7 +22,7 @@ function builder(object $arrayFirst, object $arraySecond): array
         ) {
             $unit[$key] = [
                 'name' => $key,
-                'status' => 'not changed',
+                'status' => 'unchanged',
                 'value' => prepareValue($arraySecond->$key)
             ];
         } elseif (!property_exists($arrayFirst, $key)) {
@@ -64,16 +64,18 @@ function builder(object $arrayFirst, object $arraySecond): array
 
 // setting5 null?  
 function prepareValue($value)
-{
-    if (is_bool($value)) {
-        return $value ? 'true' : 'false';
-    }
-    if (is_null($value)) {
-        return 'null';
-    }
-    if (!is_object($value)) {
-        return $value;
-    }
+{ 
+    return $value;
 }
+//     if (is_bool($value)) {
+//         return $value ? 'true' : 'false';
+//     }
+//     if (is_null($value)) {
+//         return 'null';
+//     }
+//     if (!is_object($value)) {
+//         return $value;
+//     }
+// }
 
 
