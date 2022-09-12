@@ -77,4 +77,18 @@ class genDiffTest extends TestCase
     //     $result1 = genDiff(__DIR__ . "/../testFile/deep10.yaml", __DIR__ . "/../testFile/deep20.yaml", 'json');
     //     print_r($result1);
     // }
+
+    // ______________Plain________________
+
+    // public function testGetDiffSimplePlainToJson()
+    // {
+    //     $result1 = genDiff(__DIR__ . "/../testFile/simple10.json", __DIR__ . "/../testFile/simple20.json", 'plain');
+    //     print_r($result1);
+    // }
+
+    // public function testGetDiffDeepPlainToJson()
+    // {
+    //     $result1 = genDiff(__DIR__ . "/../testFile/deep1.json", __DIR__ . "/../testFile/deep2.json", 'plain');
+    //     print_r($result1);
+    // }
 }

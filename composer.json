@@ -12,7 +12,6 @@
             "src/genDiff.php",
             "src/Parsers.php",
             "src/Formatter.php",
-            "src/Build.php",
             "src/TestStylish.php",
             "src/formatters/Stylish.php",
             "src/formatters/Json.php",
