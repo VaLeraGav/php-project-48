@@ -6,25 +6,25 @@ function formatter(array $data, string $ancestry = '')
 {
     $data = array_filter($data, fn ($unit) => $unit['status'] !== 'unchanged');
 
-    $lines = array_map(function ($elem) use ($ancestry) {
-        $newAncestry = $ancestry . $elem['name'];
-        $status = $elem['status'];
+    $lines = array_map(function ($unit) use ($ancestry) {
+        $newAncestry = $ancestry . $unit['name'];
+        $status = $unit['status'];
 
         switch ($status) {
             case 'nested':
-                return formatter($elem['child'], "{$newAncestry}.");
+                return formatter($unit['child'], "{$newAncestry}.");
 
             case 'added':
-                $value = checkArray($elem['value']);
+                $value = checkArray($unit['value']);
                 return "Property '{$newAncestry}' was added with value: {$value}";
 
             case 'removed':
                 return "Property '{$newAncestry}' was removed";
 
             case 'changed':
-                $newValue = checkArray($elem['newValue']);
+                $newValue = checkArray($unit['newValue']);
                 $newValue = ($newValue === 'NULL') ? 'null' : $newValue;
-                $oldValue = checkArray($elem['oldValue']);
+                $oldValue = checkArray($unit['oldValue']);
                 $oldValue = ($oldValue === 'NULL') ? 'null' : $oldValue;
                 return "Property '{$newAncestry}' was updated. From {$oldValue} to {$newValue}";
 

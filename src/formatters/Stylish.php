@@ -37,7 +37,7 @@ function iter(array $data): array
     return $result;
 }
 
-// не нравиться такой подход 
+// не нравиться такой подход
 function toString(array $formatted): string
 {
     $formatted = (string) json_encode($formatted, JSON_PRETTY_PRINT);
