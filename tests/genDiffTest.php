@@ -6,89 +6,87 @@ use PHPUnit\Framework\TestCase;
 
 use function Differ\Differ\genDiff;
 
+function getTestFilePath($fileName)
+{
+    return __DIR__ . "/../testFile/{$fileName}";
+}
+
 class genDiffTest extends TestCase
 {
     // ______________Stylish________________
 
     public function testGetDiffSimpleJson()
     {
-        // $correctDiff = file_get_contents(__DIR__ . '/fixtures/correctDiffJson');
-        $result1 = genDiff(__DIR__ . "/../testFile/simple10.json", __DIR__ . "/../testFile/simple20.json");
-        print_r($result1);
-        // $this->assertEquals($correctDiff, $result1);
-
-        // $inCorrectDiff = "{incorrect:json}";
-        // $this->assertNotSame($inCorrectDiff, $result1);
+        $file1 = 'simple10.json';
+        $file2 = 'simple20.json';
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/Json/correctSimple');
+        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2)));
     }
 
     public function testGetDiffSimpleYml()
     {
-        // $correctDiff = file_get_contents(__DIR__ . '/fixtures/correctDiffYml');
-        $result1 = genDiff(__DIR__ . "/../testFile/simple1.yaml", __DIR__ . "/../testFile/simple2.yaml");
-        print_r($result1);
-        // $this->assertEquals($correctDiff, $result1);
-
-        // $inCorrectDiff = "{incorrect:yaml}";
-        // $this->assertNotSame($inCorrectDiff, $result1);
+        $file1 = 'simple1.yaml';
+        $file2 = 'simple2.yaml';
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/Yml/correctSimple');
+        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2)));
     }
 
     public function testGetDiffDeepJson()
     {
-        // $correctDiff = file_get_contents(__DIR__ . '/fixtures/correctDiffYml');
-        $result1 = genDiff(__DIR__ . "/../testFile/deep1.json", __DIR__ . "/../testFile/deep2.json");
-        print_r($result1);
-        // $this->assertEquals($correctDiff, $result1);
-
-        // $inCorrectDiff = "{incorrect:yaml}";
-        // $this->assertNotSame($inCorrectDiff, $result1);
+        $file1 = 'deep1.json';
+        $file2 = 'deep2.json';
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/Json/correctDeep');
+        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2)));
     }
+
     public function testGetDiffDeepYaml()
     {
-        // $correctDiff = file_get_contents(__DIR__ . '/fixtures/correctDiffYml');
-        $result1 = genDiff(__DIR__ . "/../testFile/deep10.yaml", __DIR__ . "/../testFile/deep20.yaml");
-        print_r($result1);
-        // $this->assertEquals($correctDiff, $result1);
+        $file1 = 'deep10.yaml';
+        $file2 = 'deep20.yaml';
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/Yml/correctDeep');
+        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2)));
+    }
 
-        // $inCorrectDiff = "{incorrect:yaml}";
-        // $this->assertNotSame($inCorrectDiff, $result1);
+    // ______________Plain________________
+
+    public function testGetDiffSimpleJsonToPlain()
+    {
+        $file1 = 'simple10.json';
+        $file2 = 'simple20.json';
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/Plain/correctSimple');
+        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2), 'plain'));
+    }
+
+    public function testGetDiffSimpleYmlToPlain()
+    {
+        $file1 = 'simple1.yaml';
+        $file2 = 'simple2.yaml';
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/Plain/correctSimple');
+        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2), 'plain'));
+    }
+
+    public function testGetDiffDeepJsonToPlain()
+    {
+        $file1 = 'deep1.json';
+        $file2 = 'deep2.json';
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/Plain/correctDeep');
+        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2), 'plain'));
+    }
+    public function testGetDiffDeepYamlToPlain()
+    {
+        $file1 = 'deep10.yaml';
+        $file2 = 'deep20.yaml';
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/Plain/correctDeep');
+        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2), 'plain'));
     }
 
     // ______________Json________________
 
-    // public function testGetDiffSimpleJsonToJson()
-    // {
-    //     $result1 = genDiff(__DIR__ . "/../testFile/simple10.json", __DIR__ . "/../testFile/simple20.json", 'json');
-    //     print_r($result1);
-    // }
-
-    // public function testGetDiffSimpleYmlToJson()
-    // {
-    //     $result1 = genDiff(__DIR__ . "/../testFile/simple1.yaml", __DIR__ . "/../testFile/simple2.yaml", 'json');
-    //     print_r($result1);
-    // }
-
-    // public function testGetDiffDeepJsonToJson()
-    // {
-    //     $result1 = genDiff(__DIR__ . "/../testFile/deep1.json", __DIR__ . "/../testFile/deep2.json", 'json');
-    //     print_r($result1);
-    // }
-    // public function testGetDiffDeepYamlToJson()
-    // {
-    //     $result1 = genDiff(__DIR__ . "/../testFile/deep10.yaml", __DIR__ . "/../testFile/deep20.yaml", 'json');
-    //     print_r($result1);
-    // }
-
-    // ______________Plain________________
-
     public function testGetDiffSimplePlainToJson()
     {
-        $result1 = genDiff(__DIR__ . "/../testFile/simple10.json", __DIR__ . "/../testFile/simple20.json", 'plain');
-        print_r($result1);
-    }
-
-    public function testGetDiffDeepPlainToJson()
-    {
-        $result1 = genDiff(__DIR__ . "/../testFile/deep1.json", __DIR__ . "/../testFile/deep2.json", 'plain');
-        print_r($result1);
+        $file1 = 'simple10.json';
+        $file2 = 'simple20.json';
+        $correctDiff = file_get_contents(__DIR__ . '/fixtures/Json/correctSimple2');
+        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2), 'json'));
     }
 }
