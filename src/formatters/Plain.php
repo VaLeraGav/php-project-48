@@ -2,7 +2,12 @@
 
 namespace Differ\Formatters\Plain;
 
-function formatter(array $data, string $ancestry = '')
+function formatter(array $data): string
+{
+    return iter($data);
+}
+
+function iter(array $data, string $ancestry = '')
 {
     $data = array_filter($data, fn ($unit) => $unit['status'] !== 'unchanged');
 
@@ -12,7 +17,7 @@ function formatter(array $data, string $ancestry = '')
 
         switch ($status) {
             case 'nested':
-                return formatter($unit['child'], "{$newAncestry}.");
+                return iter($unit['child'], "{$newAncestry}.");
 
             case 'added':
                 $value = checkArray($unit['value']);
