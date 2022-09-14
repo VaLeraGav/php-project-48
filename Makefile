@@ -7,13 +7,10 @@ validate:
 autoload:
 	composer dump-autoload
 
-gendiff:
-	./bin/gendiff -h
-
 test:
 	composer exec --verbose phpunit tests
 
-test-testdox:
+test-dox:
 	./vendor/bin/phpunit tests --testdox
 
 lint:

@@ -25,6 +25,3 @@ DOC;
 $args = Docopt::handle($doc, ['version' => 'Generate diff 0.1']);
 
 print_r(genDiff($args->args['<firstFile>'], $args->args['<secondFile>'], $args->args['--format']));
-
-// ./bin/gendiff testFile/filePlain1.json testFile/filePlain2.json
-// ./bin/gendiff TestFile/fileTest1.yaml TestFile/fileTest2.yaml

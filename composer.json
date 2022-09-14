@@ -16,7 +16,6 @@
             "src/formatters/Stylish.php",
             "src/formatters/Json.php",
             "src/formatters/Plain.php"
-
         ]
     },
     "bin": [
