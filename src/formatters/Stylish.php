@@ -2,13 +2,13 @@
 
 namespace Differ\Formatters\Stylish;
 
-function formatter($data)
+function formatter(array $data): string
 {
     $result = iter($data);
     return "{\n{$result}\n}";
 }
 
-function iter($data, $depth = 0)
+function iter(array $data, int $depth = 0)
 {
     $indent = str_repeat(' ', 4 * $depth);
     $stylish = array_map(function ($unit) use ($indent, $depth) {

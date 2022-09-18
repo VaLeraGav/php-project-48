@@ -2,12 +2,12 @@
 
 namespace Differ\Formatters\Plain;
 
-function formatter($data)
+function formatter(array $data): string
 {
     return iter($data);
 }
 
-function iter($data, $ancestry = null)
+function iter(array $data, $ancestry = null)
 {
     $lines = array_map(function ($unit) use ($ancestry) {
         $newAncestry = $ancestry . $unit['name'];
@@ -47,10 +47,5 @@ function checkArray($value): string
     if (is_null($value)) {
         return 'null';
     }
-    // if (is_bool($value)) {
-    //     return $value ? 'true' : 'false';
-    // }
-    // return is_numeric($value) ? (string) $value : "'$value'";
     return var_export($value, true);
-
 }

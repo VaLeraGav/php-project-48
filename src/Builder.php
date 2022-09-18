@@ -9,7 +9,7 @@ function union_merge($collectionFirst, $collectionSecond)
     return array_unique($result);
 }
 
-function builder(object $arrayFirst, object $arraySecond)
+function builder(object $arrayFirst, object $arraySecond): array
 {
     $keys = union_merge(array_keys(get_object_vars($arrayFirst)), array_keys(get_object_vars($arraySecond)));
     sort($keys);

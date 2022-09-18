@@ -21,7 +21,7 @@ class genDiffTest extends TestCase
     /**
      * @dataProvider additionProvider
      */
-    public function testGenDiff($correctDiff, $file1, $file2, $format)
+    public function testGenDiff(string $correctDiff, string $file1, string $file2, string $format)
     {
         $correctDiff = file_get_contents(getTestFixturesPath($correctDiff));
         $correctDiff = str_replace(array("\r"), "", $correctDiff);

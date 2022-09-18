@@ -4,15 +4,14 @@ namespace Differ\Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function readFile($filePath)
+function readFile(string $filePath): void
 {
     if (!file_exists($filePath)) {
         throw new \Exception("The file {$filePath} does not exists.\n");
     }
-    return $filePath;
 }
 
-function parser($path): object
+function parser(string $path): object
 {
     readFile($path);
     $splitPath = pathinfo($path);

@@ -6,7 +6,7 @@ use function Differ\Parsers\parser;
 use function Differ\TestStylish\builder;
 use function Differ\Formatters\format;
 
-function genDiff($firstFilePath, $secondFilePath, $format = 'stylish')
+function genDiff(string $firstFilePath, string $secondFilePath, string $format = 'stylish')
 {
     $arrayFirst = parser($firstFilePath);
     $arraySecond = parser($secondFilePath);
