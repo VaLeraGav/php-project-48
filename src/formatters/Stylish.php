@@ -2,12 +2,13 @@
 
 namespace Differ\Formatters\Stylish;
 
-function formatter(array $data): string
+function formatter( $data)
 {
-    return toString(iter($data));
+    $result = iter($data);
+    return "{\n{$result}\n}";
 }
 
-function iter(array $data): array
+function iter($data)
 {
     $result = [];
     foreach ($data as $unit) {
@@ -34,14 +35,5 @@ function iter(array $data): array
                 throw new \Exception("Incorrect status '{$status}'.");
         }
     }
-    return $result;
-}
-
-// не нравиться такой подход
-function toString(array $formatted): string
-{
-    $formatted = (string) json_encode($formatted, JSON_PRETTY_PRINT);
-    $result = str_replace(",", '', str_replace('"', '', $formatted));
-    $result = str_replace("  - ", "- ", str_replace("  + ", "+ ", $result));
     return $result;
 }

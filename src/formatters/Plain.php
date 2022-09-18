@@ -2,15 +2,13 @@
 
 namespace Differ\Formatters\Plain;
 
-function formatter(array $data): string
+function formatter($data)
 {
-    return iter($data);
+    return iter($data) . "\n";
 }
 
-function iter(array $data, string $ancestry = '')
+function iter($data, $ancestry = null)
 {
-    $data = array_filter($data, fn ($unit) => $unit['status'] !== 'unchanged');
-
     $lines = array_map(function ($unit) use ($ancestry) {
         $newAncestry = $ancestry . $unit['name'];
         $status = $unit['status'];
@@ -28,23 +26,31 @@ function iter(array $data, string $ancestry = '')
 
             case 'changed':
                 $newValue = checkArray($unit['newValue']);
-                $newValue = ($newValue === 'NULL') ? 'null' : $newValue;
                 $oldValue = checkArray($unit['oldValue']);
-                $oldValue = ($oldValue === 'NULL') ? 'null' : $oldValue;
                 return "Property '{$newAncestry}' was updated. From {$oldValue} to {$newValue}";
-
+            case 'unchanged':
+                return;
             default:
                 throw new \Exception("Incorrect status '{$status}'.");
         };
     }, $data);
-    $result = implode("\n", $lines);
+    $data = array_filter($lines);
+    $result = implode("\n", $data);
     return $result;
 }
 
-function checkArray($val): string
+function checkArray($value): string
 {
-    if (is_object($val)) {
+    if (is_array($value) || is_object($value)) {
         return "[complex value]";
     }
-    return var_export($val, true);
+    if (is_null($value)) {
+        return 'null';
+    }
+    // if (is_bool($value)) {
+    //     return $value ? 'true' : 'false';
+    // }
+    // return is_numeric($value) ? (string) $value : "'$value'";
+    return var_export($value, true);
+
 }

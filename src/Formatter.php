@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters;
 
-function format(string $format, array $tree): string
+function format($format, $tree)
 {
     switch ($format) {
         case 'json':
