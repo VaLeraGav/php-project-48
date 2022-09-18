@@ -3,8 +3,7 @@
 namespace Differ\TestStylish;
 // ./bin/gendiff testFile/deep1.json testFile/deep2.json
 
-// use function Funct\Collection\union;
-function union($collectionFirst, $collectionSecond)
+function union_merge($collectionFirst, $collectionSecond)
 {
     $result = call_user_func_array('array_merge', func_get_args());
     return array_unique($result);
@@ -12,7 +11,7 @@ function union($collectionFirst, $collectionSecond)
 
 function builder(object $arrayFirst, object $arraySecond)
 {
-    $keys = union(array_keys(get_object_vars($arrayFirst)), array_keys(get_object_vars($arraySecond)));
+    $keys = union_merge(array_keys(get_object_vars($arrayFirst)), array_keys(get_object_vars($arraySecond)));
     sort($keys);
     $unit = array_map(
         function ($key) use ($arrayFirst, $arraySecond) {
