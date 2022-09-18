@@ -4,7 +4,7 @@ namespace Differ\Formatters\Plain;
 
 function formatter($data)
 {
-    return iter($data) . "\n";
+    return iter($data);
 }
 
 function iter($data, $ancestry = null)
