@@ -9,7 +9,7 @@ function formatter(array $data): string
 
 function iter(array $data, $ancestry = null)
 {
-    $lines = array_map(function ($unit) use ($ancestry) {
+    $plain = array_map(function ($unit) use ($ancestry) {
         $newAncestry = $ancestry . $unit['name'];
         $status = $unit['status'];
 
@@ -34,7 +34,7 @@ function iter(array $data, $ancestry = null)
                 throw new \Exception("Incorrect status '{$status}'.");
         };
     }, $data);
-    $data = array_filter($lines);
+    $data = array_filter($plain);
     $result = implode("\n", $data);
     return $result;
 }

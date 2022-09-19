@@ -7,6 +7,9 @@ validate:
 autoload:
 	composer dump-autoload
 
+gendiff:
+	./bin/gendiff -h
+
 test:
 	composer exec --verbose phpunit tests
 

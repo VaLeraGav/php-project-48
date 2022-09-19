@@ -20,6 +20,7 @@ $ git clone https://github.com/VaLeraGav/php-project-lvl2.git
 
 $ make install
 ```
+
 ## CI приложжение
 
 `$ bin/gendiff -h` - все возможности gendiff
@@ -31,10 +32,16 @@ $ make install
 
 ## Пример использования
 
+### Сравнение файлов json и yaml/yml в формате по умолчанию stylish
+![asciicast](https://asciinema.org/a/I8YGArIAn9fxAxTj7xNLf4ox3.svg)
 
+![asciicast](https://asciinema.org/a/PJlHF0XTJQxy4vG1gwk1JBYsv.svg)
 
+### Сравнение файлов json и yaml/yml в формате stylish
+![asciicast](https://asciinema.org/a/UTS850TgHdX5pXKqOsmV53Ey9.svg)
 
+### Сравнение файлов json и yaml/yml в формате plain
+![asciicast](https://asciinema.org/a/GBorRO2qB9KOYdSKLfyGYrwYi.svg)
 
-
-
-
+### Сравнение файлов json и yaml/yml в формате json
+![asciicast](https://asciinema.org/a/m1ol4r9ABcVbrHdV3440BrMDw.svg)

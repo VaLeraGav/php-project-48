@@ -1,7 +1,6 @@
 <?php
 
 namespace Differ\TestStylish;
-// ./bin/gendiff testFile/deep1.json testFile/deep2.json
 
 function union_merge($collectionFirst, $collectionSecond)
 {
@@ -9,45 +8,45 @@ function union_merge($collectionFirst, $collectionSecond)
     return array_unique($result);
 }
 
-function builder(object $arrayFirst, object $arraySecond): array
+function builder(object $objFirst, object $objSecond): array
 {
-    $keys = union_merge(array_keys(get_object_vars($arrayFirst)), array_keys(get_object_vars($arraySecond)));
+    $keys = union_merge(array_keys(get_object_vars($objFirst)), array_keys(get_object_vars($objSecond)));
     sort($keys);
     $unit = array_map(
-        function ($key) use ($arrayFirst, $arraySecond) {
-            if (!property_exists($arrayFirst, $key)) {
+        function ($key) use ($objFirst, $objSecond) {
+            if (!property_exists($objFirst, $key)) {
                 return [
                     'name' => $key,
                     'status' => 'added',
-                    'value' => $arraySecond->$key
+                    'value' => $objSecond->$key
                 ];
             }
-            if (!property_exists($arraySecond, $key)) {
+            if (!property_exists($objSecond, $key)) {
                 return [
                     'name' => $key,
                     'status' => 'removed',
-                    'value' => $arrayFirst->$key
+                    'value' => $objFirst->$key
                 ];
             }
-            if (is_object($arraySecond->$key) && is_object($arrayFirst->$key)) {
+            if (is_object($objSecond->$key) && is_object($objFirst->$key)) {
                 return [
                     'name' => $key,
                     'status' => 'nested',
-                    'child' => builder($arrayFirst->$key, $arraySecond->$key)
+                    'child' => builder($objFirst->$key, $objSecond->$key)
                 ];
             }
-            if ($arrayFirst->$key === $arraySecond->$key) {
+            if ($objFirst->$key === $objSecond->$key) {
                 return [
                     'name' => $key,
                     'status' => 'unchanged',
-                    'value' => $arrayFirst->$key
+                    'value' => $objFirst->$key
                 ];
             } else {
                 return [
                     'name' => $key,
                     'status' => 'changed',
-                    'newValue' => $arraySecond->$key,
-                    'oldValue' => $arrayFirst->$key
+                    'newValue' => $objSecond->$key,
+                    'oldValue' => $objFirst->$key
                 ];
             }
         },
