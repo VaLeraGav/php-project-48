@@ -25,6 +25,9 @@ class genDiffTest extends TestCase
     {
         $correctDiff = file_get_contents(getTestFixturesPath($correctDiff));
         $correctDiff = str_replace(array("\r"), "", $correctDiff);
+        // echo "\n";
+        // print_r($correctDiff);
+        // echo "\n";
         $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2), $format));
     }
 
