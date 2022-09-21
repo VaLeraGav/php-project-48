@@ -2,12 +2,12 @@
 
 namespace Differ\TestStylish;
 
-use function Funct\Collection\union;
-use function Funct\Collection\sortBy;
+// use function Funct\Collection\union;
+// use function Funct\Collection\sortBy;
 
 function builder(object $objFirst, object $objSecond): array
 {
-    $keys = union(array_keys(get_object_vars($objFirst)), array_keys(get_object_vars($objSecond)));
+    $keys = funct_union(array_keys(get_object_vars($objFirst)), array_keys(get_object_vars($objSecond)));
     // sort($keys);
     $keys = array_values(sortBy($keys, fn($key) => $key));
     $unit = array_map(
@@ -51,4 +51,51 @@ function builder(object $objFirst, object $objSecond): array
         $keys
     );
     return $unit;
+}
+
+
+/**
+ * Returns a sorted array by callback function which should return value to which sort
+ *
+ * @param array           $collection
+ * @param callable|string $sortBy
+ * @param string          $sortFunction
+ *
+ * @return array
+ * @author Aurimas Niekis <aurimas@niekis.lt>
+ */
+function sortBy($collection, $sortBy, $sortFunction = 'asort')
+{
+    if (false === is_callable($sortBy)) {
+        $sortBy = function ($item) use ($sortBy) {
+            return $item[$sortBy];
+        };
+    }
+
+    $values = array_map($sortBy, $collection);
+    $sortFunction($values);
+
+    $result = [];
+    foreach ($values as $key => $value) {
+        $result[$key] = $collection[$key];
+    }
+
+    return $result;
+}
+
+/**
+ * Computes the union of the passed-in arrays: the list of unique items, in order, that are present in one or more of
+ * the arrays.
+ *
+ * @param array $collectionFirst
+ * @param array $collectionSecond
+ *
+ * @return array
+ * @author Aurimas Niekis <aurimas@niekis.lt>
+ */
+function funct_union($collectionFirst, $collectionSecond)
+{
+    $result = call_user_func_array('array_merge', func_get_args());
+
+    return array_unique($result);
 }
