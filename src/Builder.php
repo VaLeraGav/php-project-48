@@ -9,7 +9,8 @@ function builder(object $objFirst, object $objSecond): array
 {
     $keys = funct_union(array_keys(get_object_vars($objFirst)), array_keys(get_object_vars($objSecond)));
     // sort($keys);
-    $keys = array_values(sortBy($keys, fn($key) => $key));
+    $sortKeys = sortBy($keys, fn ($key) => $key);
+    $keys = array_values($sortKeys);
     $unit = array_map(
         function ($key) use ($objFirst, $objSecond) {
             if (!property_exists($objFirst, $key)) {
@@ -65,7 +66,8 @@ function builder(object $objFirst, object $objSecond): array
  */
 function sortBy($collection, $sortBy, $sortFunction = 'asort')
 {
-    if (false === is_callable($sortBy)) {
+    $bool = is_callable($sortBy);
+    if (false ===  $bool) {
         $sortBy = function ($item) use ($sortBy) {
             return $item[$sortBy];
         };
