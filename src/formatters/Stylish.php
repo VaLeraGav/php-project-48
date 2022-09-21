@@ -10,14 +10,14 @@ function formatter(array $data): string
 
 function iter(array $data, int $depth = 0)
 {
-    $depth++;
+    
     $indent = str_repeat(' ', 4 * $depth);
     $stylish = array_map(function ($unit) use ($indent, $depth) {
 
         $status = $unit['status'];
         $name = $unit['name'];
 
-        
+        $depth++;
         switch ($status) {
             case 'unchanged':
                 $preparedValue = prepareValue($unit['value'], $depth);
