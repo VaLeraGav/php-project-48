@@ -16,30 +16,29 @@ function iter(array $data, int $depth = 0)
         $status = $unit['status'];
         $name = $unit['name'];
 
-        $depth++;
         switch ($status) {
             case 'unchanged':
-                $preparedValue = prepareValue($unit['value'], $depth);
+                $preparedValue = prepareValue($unit['value'], $depth++);
                 return "{$indent}    {$name}: {$preparedValue}";
 
             case 'added':
-                $preparedValue = prepareValue($unit['value'], $depth);
+                $preparedValue = prepareValue($unit['value'], $depth++);
                 return "{$indent}  + {$name}: {$preparedValue}";
 
             case 'removed':
-                $preparedValue = prepareValue($unit['value'], $depth);
+                $preparedValue = prepareValue($unit['value'], $depth++);
                 return "{$indent}  - {$name}: {$preparedValue}";
 
             case 'changed':
-                $preparedOldValue = prepareValue($unit['oldValue'], $depth);
-                $preparedNewValue = prepareValue($unit['newValue'], $depth);
+                $preparedOldValue = prepareValue($unit['oldValue'], $depth++);
+                $preparedNewValue = prepareValue($unit['newValue'], $depth++);
 
                 $deletedLine = "{$indent}  - {$name}: {$preparedOldValue}";
                 $addedLine =  "{$indent}  + {$name}: {$preparedNewValue}";
                 return implode("\n", [$deletedLine, $addedLine]);
 
             case 'nested':
-                $children = iter($unit['child'], $depth);
+                $children = iter($unit['child'], $depth++);
                 return "{$indent}    {$name}: {\n{$children}\n{$indent}    }";
 
             default:
