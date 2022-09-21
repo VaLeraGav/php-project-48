@@ -1,3 +1,5 @@
 /vendor/
 /build/
 *.cache
+coverage/
+.vccode/
