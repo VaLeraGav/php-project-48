@@ -49,15 +49,6 @@ function iter(array $data, int $depth = 0)
     return implode("\n", $stylish);
 }
 
-/**
- * Check the value for is_null and bool, also builds indents
- * 
- * @param mixed $value value for check
- * 
- * @param int $depth number of margins
- * 
- * @return string value
- */
 function prepareValue($value, int $depth): string
 {
     if (is_bool($value)) {
