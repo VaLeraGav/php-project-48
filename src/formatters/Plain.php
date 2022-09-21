@@ -56,7 +56,7 @@ function iter(array $data, string $ancestry = null)
 }
 
 /**
- * 
+ *
  * @param mixed $value
  * @return string
  */

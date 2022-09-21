@@ -50,10 +50,10 @@ function iter(array $data, int $depth = 0)
 }
 
 /**
- * 
+ *
  * @param mixed $value
  * @param int $depth
- * 
+ *
  * @return string
  */
 
