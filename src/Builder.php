@@ -2,16 +2,14 @@
 
 namespace Differ\TestStylish;
 
-function union_merge($collectionFirst, $collectionSecond)
-{
-    $result = call_user_func_array('array_merge', func_get_args());
-    return array_unique($result);
-}
+use function Funct\Collection\union;
+use function Funct\Collection\sortBy;
 
 function builder(object $objFirst, object $objSecond): array
 {
-    $keys = union_merge(array_keys(get_object_vars($objFirst)), array_keys(get_object_vars($objSecond)));
-    sort($keys);
+    $keys = union(array_keys(get_object_vars($objFirst)), array_keys(get_object_vars($objSecond)));
+    // sort($keys);
+    $keys = array_values(sortBy($keys, fn($key) => $key));
     $unit = array_map(
         function ($key) use ($objFirst, $objSecond) {
             if (!property_exists($objFirst, $key)) {

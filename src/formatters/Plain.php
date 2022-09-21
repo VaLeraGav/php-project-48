@@ -2,12 +2,14 @@
 
 namespace Differ\Formatters\Plain;
 
+use function Funct\Collection\compact;
+
 function formatter(array $data): string
 {
     return iter($data);
 }
 
-function iter(array $data, $ancestry = null)
+function iter(array $data, string $ancestry = null)
 {
     $plain = array_map(function ($unit) use ($ancestry) {
         $newAncestry = $ancestry . $unit['name'];
@@ -34,7 +36,8 @@ function iter(array $data, $ancestry = null)
                 throw new \Exception("Incorrect status '{$status}'.");
         };
     }, $data);
-    $data = array_filter($plain);
+    $data = compact($plain);
+    // $data = array_filter($plain, fn($key) => $key);
     $result = implode("\n", $data);
     return $result;
 }

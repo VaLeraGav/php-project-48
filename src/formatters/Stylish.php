@@ -16,7 +16,7 @@ function iter(array $data, int $depth = 0)
         $status = $unit['status'];
         $name = $unit['name'];
 
-        $depth += 1;
+        $depth = $depth + 1;
         switch ($status) {
             case 'unchanged':
                 $preparedValue = prepareValue($unit['value'], $depth);
@@ -49,7 +49,16 @@ function iter(array $data, int $depth = 0)
     return implode("\n", $stylish);
 }
 
-function prepareValue($value, $depth): string
+/**
+ * Check the value for is_null and bool, also builds indents
+ * 
+ * @param mixed $value value for check
+ * 
+ * @param int $depth number of margins
+ * 
+ * @return string value
+ */
+function prepareValue($value, int $depth): string
 {
     if (is_bool($value)) {
         return $value ? 'true' : 'false';
