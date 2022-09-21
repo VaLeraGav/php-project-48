@@ -9,16 +9,18 @@ function readFile(string $filePath): string
     if (!file_exists($filePath)) {
         throw new \Exception("The file {$filePath} does not exists.\n");
     }
-    return $filePath;
+    return file_get_contents($filePath);
 }
 
 function parser(string $path): object
 {
-    $path = readFile($path);
+    // $path = readFile($path);
     // $splitPath = pathinfo($path);
     // $format = $splitPath['extension'];
     $format = pathinfo($path, PATHINFO_EXTENSION);
-    $stringData = (string) file_get_contents($path);
+
+    $stringData = readFile($path);
+    // $stringData = (string) file_get_contents($path);
     switch ($format) {
         case 'json':
             return json_decode($stringData, false);

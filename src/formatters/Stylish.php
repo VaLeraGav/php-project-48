@@ -49,6 +49,14 @@ function iter(array $data, int $depth = 0)
     return implode("\n", $stylish);
 }
 
+/**
+ * 
+ * @param mixed $value
+ * @param int $depth
+ * 
+ * @return string
+ */
+
 function prepareValue($value, int $depth): string
 {
     if (is_bool($value)) {

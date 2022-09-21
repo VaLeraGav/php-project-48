@@ -34,7 +34,6 @@ class GenDiffTest extends TestCase
             ['correctDeepPlain', 'deep1.json', 'deep2.json', 'plain'],
             ['correctDeepStylish', 'deep1.json', 'deep2.json', 'stylish'],
             ['correctDeepStylish', 'deep10.yaml', 'deep20.yaml', 'stylish'],
-
             ['correctSimpleJson', 'simple10.json', 'simple20.json', 'json'],
             ['correctSimplePlain', 'simple10.json', 'simple20.json', 'plain'],
             ['correctSimpleStylish', 'simple10.json', 'simple20.json', 'stylish'],

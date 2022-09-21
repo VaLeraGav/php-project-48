@@ -62,7 +62,6 @@ function builder(object $objFirst, object $objSecond): array
  * @param string          $sortFunction
  *
  * @return array
- * @author Aurimas Niekis <aurimas@niekis.lt>
  */
 function sortBy($collection, $sortBy, $sortFunction = 'asort')
 {
@@ -91,7 +90,6 @@ function sortBy($collection, $sortBy, $sortFunction = 'asort')
  * @param array $collectionSecond
  *
  * @return array
- * @author Aurimas Niekis <aurimas@niekis.lt>
  */
 function funct_union($collectionFirst, $collectionSecond)
 {

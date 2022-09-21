@@ -10,7 +10,6 @@ namespace Differ\Formatters\Plain;
  * @param array $collection
  *
  * @return array
- * @author Aurimas Niekis <aurimas@niekis.lt>
  */
 function compact($collection)
 {
@@ -50,11 +49,17 @@ function iter(array $data, string $ancestry = null)
                 throw new \Exception("Incorrect status '{$status}'.");
         };
     }, $data);
-    // $data = compact($plain);
-    $data = array_filter($plain, fn ($key) => $key);
+    $data = compact($plain);
+    // $data = array_filter($plain, fn ($key) => $key);
     $result = implode("\n", $data);
     return $result;
 }
+
+/**
+ * 
+ * @param mixed $value
+ * @return string
+ */
 
 function checkArray($value): string
 {
