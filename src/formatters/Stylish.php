@@ -16,7 +16,7 @@ function iter(array $data, int $depth = 0)
         $status = $unit['status'];
         $name = $unit['name'];
 
-        $depth = $depth + 1;
+        $depth++;
         switch ($status) {
             case 'unchanged':
                 $preparedValue = prepareValue($unit['value'], $depth);

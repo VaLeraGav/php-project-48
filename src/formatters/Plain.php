@@ -49,9 +49,9 @@ function iter(array $data, string $ancestry = null)
                 throw new \Exception("Incorrect status '{$status}'.");
         };
     }, $data);
-    $data = compact($plain);
+    $filter_data = compact($plain);
     // $data = array_filter($plain, fn ($key) => $key);
-    $result = implode("\n", $data);
+    $result = implode("\n", $filter_data);
     return $result;
 }
 
