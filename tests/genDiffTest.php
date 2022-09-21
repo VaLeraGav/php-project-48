@@ -16,7 +16,7 @@ function getTestFixturesPath($fileName)
     return __DIR__ . "/../tests/fixtures/{$fileName}";
 }
 
-class genDiffTest extends TestCase
+class GenDiffTest extends TestCase
 {
     /**
      * @dataProvider additionProvider
