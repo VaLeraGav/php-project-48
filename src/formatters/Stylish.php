@@ -11,7 +11,6 @@ function formatter(array $data): string
 function iter(array $data, int $depth = 0)
 {
     $indent = str_repeat(' ', 4 * $depth);
-    $depth = $depth + 1;
     $stylish = array_map(function ($unit) use ($indent, $depth) {
 
         $status = $unit['status'];
@@ -19,18 +18,19 @@ function iter(array $data, int $depth = 0)
 
         switch ($status) {
             case 'unchanged':
-                $preparedValue = prepareValue($unit['value'], $depth);
+                $preparedValue = prepareValue($unit['value'], $depth + 1);
                 return "{$indent}    {$name}: {$preparedValue}";
 
             case 'added':
-                $preparedValue = prepareValue($unit['value'], $depth);
+                $preparedValue = prepareValue($unit['value'], $depth + 1);
                 return "{$indent}  + {$name}: {$preparedValue}";
 
             case 'removed':
-                $preparedValue = prepareValue($unit['value'], $depth);
+                $preparedValue = prepareValue($unit['value'], $depth + 1);
                 return "{$indent}  - {$name}: {$preparedValue}";
 
             case 'changed':
+                $depth = $depth + 1;
                 $preparedOldValue = prepareValue($unit['oldValue'], $depth);
                 $preparedNewValue = prepareValue($unit['newValue'], $depth);
 
@@ -39,7 +39,7 @@ function iter(array $data, int $depth = 0)
                 return implode("\n", [$deletedLine, $addedLine]);
 
             case 'nested':
-                $children = iter($unit['child'], $depth);
+                $children = iter($unit['child'], $depth + 1);
                 return "{$indent}    {$name}: {\n{$children}\n{$indent}    }";
 
             default:
@@ -50,10 +50,8 @@ function iter(array $data, int $depth = 0)
 }
 
 /**
- *
  * @param mixed $value
  * @param int $depth
- *
  * @return string
  */
 

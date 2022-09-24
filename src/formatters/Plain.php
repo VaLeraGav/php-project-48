@@ -2,21 +2,6 @@
 
 namespace Differ\Formatters\Plain;
 
-// use function Funct\Collection\compact;
-
-/**
- * Returns a copy of the array with all falsy values removed
- *
- * @param array $collection
- *
- * @return array
- */
-function compact($collection)
-{
-    return array_filter($collection);
-}
-
-
 function formatter(array $data): string
 {
     return iter($data);
@@ -49,14 +34,12 @@ function iter(array $data, string $ancestry = null)
                 throw new \Exception("Incorrect status '{$status}'.");
         };
     }, $data);
-    $filter_data = compact($plain);
-    // $data = array_filter($plain, fn ($key) => $key);
+    $filter_data = array_filter($plain);
     $result = implode("\n", $filter_data);
     return $result;
 }
 
 /**
- *
  * @param mixed $value
  * @return string
  */
