@@ -7,7 +7,7 @@ use Symfony\Component\Yaml\Yaml;
 function parser(string $path): object
 {
     if (!file_exists($path)) {
-        throw new \Exception("The file {$$path} does not exists.\n");
+        throw new \Exception("The file {$path} does not exists.\n");
     }
     $stringData = (string) file_get_contents($path);
 

@@ -30,9 +30,8 @@ function iter(array $data, int $depth = 0)
                 return "{$indent}  - {$name}: {$preparedValue}";
 
             case 'changed':
-                $depth = $depth + 1;
-                $preparedOldValue = prepareValue($unit['oldValue'], $depth);
-                $preparedNewValue = prepareValue($unit['newValue'], $depth);
+                $preparedOldValue = prepareValue($unit['oldValue'], $depth + 1);
+                $preparedNewValue = prepareValue($unit['newValue'], $depth + 1);
 
                 $deletedLine = "{$indent}  - {$name}: {$preparedOldValue}";
                 $addedLine =  "{$indent}  + {$name}: {$preparedNewValue}";
