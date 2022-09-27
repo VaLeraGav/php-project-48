@@ -16,26 +16,20 @@ class GenDiffTest extends TestCase
     /**
      * @dataProvider additionProvider
      */
-    public function testGenDiff(string $correctDiff, string $file1, string $file2, string $format)
+    public function testGenDiff(string $expected, string $file1, string $file2, string $format)
     {
-
-        
-        $correctDiff = file_get_contents(getTestFixturesPath($correctDiff));
-        $correctDiff = str_replace(array("\r"), "", $correctDiff);
-        $this->assertEquals($correctDiff, genDiff(getTestFixturesPath($file1), getTestFixturesPath($file2), $format));
-
-        // $this->assertStringEqualsFile($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2), $format));
+        $this->assertStringEqualsFile(getTestFixturesPath($expected), genDiff(getTestFixturesPath($file1), getTestFixturesPath($file2), $format));
     }
 
     public function additionProvider()
     {
         return [
-            ['correctDeepPlain', 'deep1.json', 'deep2.json', 'plain'],
-            ['correctDeepStylish', 'deep1.json', 'deep2.json', 'stylish'],
-            ['correctDeepStylish', 'deep10.yaml', 'deep20.yaml', 'stylish'],
-            ['correctSimpleJson', 'simple10.json', 'simple20.json', 'json'],
-            ['correctSimplePlain', 'simple10.json', 'simple20.json', 'plain'],
-            ['correctSimpleStylish', 'simple10.json', 'simple20.json', 'stylish'],
+            ['correctDeepPlain.txt', 'deep1.json', 'deep2.json', 'plain'],
+            ['correctDeepStylish.txt', 'deep1.json', 'deep2.json', 'stylish'],
+            ['correctDeepStylish.txt', 'deep10.yaml', 'deep20.yaml', 'stylish'],
+            ['correctSimpleJson.txt', 'simple10.json', 'simple20.json', 'json'],
+            ['correctSimplePlain.txt', 'simple10.json', 'simple20.json', 'plain'],
+            ['correctSimpleStylish.txt', 'simple10.json', 'simple20.json', 'stylish'],
         ];
     }
 }
