@@ -1,5 +1,6 @@
 {
     "name": "hexlet/code",
+    "description": "Second training project by Hexlet",
     "type": "project",
     "authors": [
         {
