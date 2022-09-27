@@ -53,7 +53,6 @@ function iter(array $data, int $depth = 0)
  * @param int $depth
  * @return string
  */
-
 function prepareValue($value, int $depth): string
 {
     if (is_bool($value)) {

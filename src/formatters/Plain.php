@@ -34,16 +34,14 @@ function iter(array $data, string $ancestry = null)
                 throw new \Exception("Incorrect status '{$status}'.");
         };
     }, $data);
-    $filter_data = array_filter($plain);
-    $result = implode("\n", $filter_data);
-    return $result;
+    $filterData = array_filter($plain);
+    return implode("\n", $filterData);;
 }
 
 /**
  * @param mixed $value
  * @return string
  */
-
 function checkArray($value): string
 {
     if (is_array($value) || is_object($value)) {

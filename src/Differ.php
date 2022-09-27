@@ -21,7 +21,6 @@ function genDiff(string $firstFilePath, string $secondFilePath, string $format =
     return $formattedTree;
 }
 
-
 function readFile(string $path): string
 {
     if (!file_exists($path)) {
