@@ -1,6 +1,6 @@
 <?php
 
-namespace Differ\TestStylish;
+namespace Differ\Builder;
 
 use function Functional\sort;
 
@@ -18,7 +18,7 @@ function builder(object $objFirst, object $objSecond): array
     );
 
     $keys = array_values($sortKeys);
-    $unit = array_map(
+    return $unit = array_map(
         function ($key) use ($objFirst, $objSecond) {
             if (!property_exists($objFirst, $key)) {
                 return [
@@ -58,5 +58,4 @@ function builder(object $objFirst, object $objSecond): array
         },
         $keys
     );
-    return $unit;
 }

@@ -1,8 +1,6 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/VaLeraGav/php-project-48/workflows/hexlet-check/badge.svg)](https://github.com/VaLeraGav/php-project-48/actions)
-
+[![Actions Status](https://github.com/VaLeraGav/php-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/VaLeraGav/php-project-48/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a5f903c3f592db3650ab/maintainability)](https://codeclimate.com/github/VaLeraGav/php-project-lvl2/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a5f903c3f592db3650ab/test_coverage)](https://codeclimate.com/github/VaLeraGav/php-project-lvl2/test_coverage)
 
 # Вычислитель отличий
@@ -12,7 +10,7 @@
 Необходимо реализовать сравнение 2 файлов (форматов json, yml/yaml). Работатет с плоским и вложеными данными. Отчет строиться как в json, plain, stylish формате.
 
 ## Требование, установка и запуск
-Наличие на компьютере PHP >= 7
+Наличие на компьютере PHP >= 7 и Composer.
 ```
 $ sudo apt install php
 

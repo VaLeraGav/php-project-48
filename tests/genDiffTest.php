@@ -6,11 +6,6 @@ use PHPUnit\Framework\TestCase;
 
 use function Differ\Differ\genDiff;
 
-function getTestFilePath($fileName)
-{
-    return __DIR__ . "/../testFile/{$fileName}";
-}
-
 function getTestFixturesPath($fileName)
 {
     return __DIR__ . "/../tests/fixtures/{$fileName}";
@@ -23,9 +18,13 @@ class GenDiffTest extends TestCase
      */
     public function testGenDiff(string $correctDiff, string $file1, string $file2, string $format)
     {
+
+        
         $correctDiff = file_get_contents(getTestFixturesPath($correctDiff));
         $correctDiff = str_replace(array("\r"), "", $correctDiff);
-        $this->assertEquals($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2), $format));
+        $this->assertEquals($correctDiff, genDiff(getTestFixturesPath($file1), getTestFixturesPath($file2), $format));
+
+        // $this->assertStringEqualsFile($correctDiff, genDiff(getTestFilePath($file1), getTestFilePath($file2), $format));
     }
 
     public function additionProvider()
