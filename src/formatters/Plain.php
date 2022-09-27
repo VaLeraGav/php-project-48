@@ -35,13 +35,15 @@ function iter(array $data, string $ancestry = null)
         };
     }, $data);
     $filterData = array_filter($plain);
-    return implode("\n", $filterData);;
+    $result = implode("\n", $filterData);
+    return $result;
 }
 
 /**
  * @param mixed $value
  * @return string
  */
+
 function checkArray($value): string
 {
     if (is_array($value) || is_object($value)) {
