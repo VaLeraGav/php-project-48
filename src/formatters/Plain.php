@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Plain;
 
-function formatter(array $data): string
+function format(array $data): string
 {
     return iter($data);
 }
@@ -18,15 +18,15 @@ function iter(array $data, string $ancestry = null)
                 return iter($unit['child'], "{$newAncestry}.");
 
             case 'added':
-                $value = checkArray($unit['value']);
+                $value = preparedValues($unit['value']);
                 return "Property '{$newAncestry}' was added with value: {$value}";
 
             case 'removed':
                 return "Property '{$newAncestry}' was removed";
 
             case 'changed':
-                $newValue = checkArray($unit['newValue']);
-                $oldValue = checkArray($unit['oldValue']);
+                $newValue = preparedValues($unit['newValue']);
+                $oldValue = preparedValues($unit['oldValue']);
                 return "Property '{$newAncestry}' was updated. From {$oldValue} to {$newValue}";
             case 'unchanged':
                 return;
@@ -34,8 +34,8 @@ function iter(array $data, string $ancestry = null)
                 throw new \Exception("Incorrect status '{$status}'.");
         };
     }, $data);
-    $filterData = array_filter($plain);
-    $result = implode("\n", $filterData);
+    $filteredData = array_filter($plain);
+    $result = implode("\n", $filteredData);
     return $result;
 }
 
@@ -44,7 +44,7 @@ function iter(array $data, string $ancestry = null)
  * @return string
  */
 
-function checkArray($value): string
+function preparedValues($value): string
 {
     if (is_array($value) || is_object($value)) {
         return "[complex value]";

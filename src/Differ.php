@@ -3,7 +3,7 @@
 namespace Differ\Differ;
 
 use function Differ\Parsers\parse;
-use function Differ\Builder\builder;
+use function Differ\Builder\build;
 use function Differ\Formatters\format;
 
 function genDiff(string $firstFilePath, string $secondFilePath, string $format = 'stylish')
@@ -15,10 +15,9 @@ function genDiff(string $firstFilePath, string $secondFilePath, string $format =
     $parsedFirstData  = parse($firstData, pathinfo($firstFilePath, PATHINFO_EXTENSION));
     $parsedSecondData = parse($secondData, pathinfo($secondFilePath, PATHINFO_EXTENSION));
 
-    $tree = builder($parsedFirstData, $parsedSecondData);
+    $tree = build($parsedFirstData, $parsedSecondData);
 
-    $formattedTree = format($format, $tree);
-    return $formattedTree;
+    return format($format, $tree);;
 }
 
 function readFile(string $path): string

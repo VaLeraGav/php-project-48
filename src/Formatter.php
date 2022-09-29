@@ -6,11 +6,11 @@ function format(string $format, array $tree): string
 {
     switch ($format) {
         case 'json':
-            return Json\formatter($tree);
+            return Json\format($tree);
         case 'plain':
-            return Plain\formatter($tree);
+            return Plain\format($tree);
         case 'stylish':
-            return Stylish\formatter($tree);
+            return Stylish\format($tree);
         default:
             throw new \Exception("The {$format} format is not supported");
     }

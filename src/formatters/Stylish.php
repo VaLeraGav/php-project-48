@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Stylish;
 
-function formatter(array $data): string
+function format(array $data): string
 {
     $result = iter($data);
     return "{\n{$result}\n}";
@@ -18,20 +18,20 @@ function iter(array $data, int $depth = 0)
 
         switch ($status) {
             case 'unchanged':
-                $preparedValue = prepareValue($unit['value'], $depth + 1);
+                $preparedValue = preparedValues($unit['value'], $depth + 1);
                 return "{$indent}    {$name}: {$preparedValue}";
 
             case 'added':
-                $preparedValue = prepareValue($unit['value'], $depth + 1);
+                $preparedValue = preparedValues($unit['value'], $depth + 1);
                 return "{$indent}  + {$name}: {$preparedValue}";
 
             case 'removed':
-                $preparedValue = prepareValue($unit['value'], $depth + 1);
+                $preparedValue = preparedValues($unit['value'], $depth + 1);
                 return "{$indent}  - {$name}: {$preparedValue}";
 
             case 'changed':
-                $preparedOldValue = prepareValue($unit['oldValue'], $depth + 1);
-                $preparedNewValue = prepareValue($unit['newValue'], $depth + 1);
+                $preparedOldValue = preparedValues($unit['oldValue'], $depth + 1);
+                $preparedNewValue = preparedValues($unit['newValue'], $depth + 1);
 
                 $deletedLine = "{$indent}  - {$name}: {$preparedOldValue}";
                 $addedLine =  "{$indent}  + {$name}: {$preparedNewValue}";
@@ -53,7 +53,7 @@ function iter(array $data, int $depth = 0)
  * @param int $depth
  * @return string
  */
-function prepareValue($value, int $depth): string
+function preparedValues($value, int $depth): string
 {
     if (is_bool($value)) {
         return $value ? 'true' : 'false';
@@ -68,7 +68,7 @@ function prepareValue($value, int $depth): string
     $keys = array_keys(get_object_vars($value));
     $indent = str_repeat(' ', 4 * $depth);
     $lines = array_map(function ($key) use ($value, $depth, $indent) {
-        $children = prepareValue($value->$key, $depth + 1);
+        $children = preparedValues($value->$key, $depth + 1);
         return "{$indent}    {$key}: {$children}";
     }, $keys);
 

@@ -4,7 +4,7 @@ namespace Differ\Builder;
 
 use function Functional\sort;
 
-function builder(object $objFirst, object $objSecond): array
+function build(object $objFirst, object $objSecond): array
 {
     $keyObjFirst = array_keys(get_object_vars($objFirst));
     $keyObjSecond = array_keys(get_object_vars($objSecond));
@@ -12,14 +12,13 @@ function builder(object $objFirst, object $objSecond): array
 
     $sortKeys = sort(
         $uniqueKeys,
-        function ($left, $right) {
-            return strcmp($left, $right);
-        }
+        fn ($left, $right) => strcmp($left, $right)
     );
 
     $keys = array_values($sortKeys);
     return $unit = array_map(
         function ($key) use ($objFirst, $objSecond) {
+
             if (!property_exists($objFirst, $key)) {
                 return [
                     'name' => $key,
@@ -27,6 +26,7 @@ function builder(object $objFirst, object $objSecond): array
                     'value' => $objSecond->$key
                 ];
             }
+
             if (!property_exists($objSecond, $key)) {
                 return [
                     'name' => $key,
@@ -34,27 +34,29 @@ function builder(object $objFirst, object $objSecond): array
                     'value' => $objFirst->$key
                 ];
             }
+
             if (is_object($objSecond->$key) && is_object($objFirst->$key)) {
                 return [
                     'name' => $key,
                     'status' => 'nested',
-                    'child' => builder($objFirst->$key, $objSecond->$key)
+                    'child' => build($objFirst->$key, $objSecond->$key)
                 ];
             }
+
             if ($objFirst->$key === $objSecond->$key) {
                 return [
                     'name' => $key,
                     'status' => 'unchanged',
                     'value' => $objFirst->$key
                 ];
-            } else {
-                return [
-                    'name' => $key,
-                    'status' => 'changed',
-                    'newValue' => $objSecond->$key,
-                    'oldValue' => $objFirst->$key
-                ];
             }
+
+            return [
+                'name' => $key,
+                'status' => 'changed',
+                'newValue' => $objSecond->$key,
+                'oldValue' => $objFirst->$key
+            ];
         },
         $keys
     );
