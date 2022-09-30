@@ -17,7 +17,7 @@ function genDiff(string $firstFilePath, string $secondFilePath, string $format =
 
     $tree = build($parsedFirstData, $parsedSecondData);
 
-    return format($format, $tree);;
+    return format($format, $tree);
 }
 
 function readFile(string $path): string
