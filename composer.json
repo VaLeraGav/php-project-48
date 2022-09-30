@@ -14,9 +14,9 @@
             "src/Parsers.php",
             "src/Formatter.php",
             "src/Builder.php",
-            "src/Formatters/Stylish.php",
-            "src/Formatters/Json.php",
-            "src/Formatters/Plain.php"
+            "src/Formatter/Stylish.php",
+            "src/Formatter/Json.php",
+            "src/Formatter/Plain.php"
         ]
     },
     "bin": [
