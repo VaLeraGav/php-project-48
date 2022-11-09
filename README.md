@@ -35,7 +35,7 @@ $ make install
 ### Сравнение файлов json и yaml/yml в формате по умолчанию stylish
 [![asciicast](https://asciinema.org/a/I8YGArIAn9fxAxTj7xNLf4ox3.svg)](https://asciinema.org/a/I8YGArIAn9fxAxTj7xNLf4ox3)
 
-![asciicast](https://asciinema.org/a/PJlHF0XTJQxy4vG1gwk1JBYsv.svg)(https://asciinema.org/a/PJlHF0XTJQxy4vG1gwk1JBYsv)
+[![asciicast](https://asciinema.org/a/PJlHF0XTJQxy4vG1gwk1JBYsv.svg)](https://asciinema.org/a/PJlHF0XTJQxy4vG1gwk1JBYsv)
 
 ### Сравнение файлов json и yaml/yml в формате stylish
 [![asciicast](https://asciinema.org/a/UTS850TgHdX5pXKqOsmV53Ey9.svg)](https://asciinema.org/a/UTS850TgHdX5pXKqOsmV53Ey9)
