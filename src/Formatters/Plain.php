@@ -32,7 +32,7 @@ function iter(array $data, string $ancestry = null)
                 return;
             default:
                 throw new \Exception("Incorrect status '{$status}'.");
-        };
+        }
     }, $data);
     $filteredData = array_filter($plain);
     $result = implode("\n", $filteredData);
@@ -43,7 +43,6 @@ function iter(array $data, string $ancestry = null)
  * @param mixed $value
  * @return string
  */
-
 function preparedValues($value): string
 {
     if (is_array($value) || is_object($value)) {
