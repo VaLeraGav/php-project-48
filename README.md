@@ -33,15 +33,15 @@ $ make install
 ## Пример использования
 
 ### Сравнение файлов json и yaml/yml в формате по умолчанию stylish
-![asciicast](https://asciinema.org/a/I8YGArIAn9fxAxTj7xNLf4ox3.svg)
+[![asciicast](https://asciinema.org/a/I8YGArIAn9fxAxTj7xNLf4ox3.svg)](https://asciinema.org/a/I8YGArIAn9fxAxTj7xNLf4ox3)
 
-![asciicast](https://asciinema.org/a/PJlHF0XTJQxy4vG1gwk1JBYsv.svg)
+![asciicast](https://asciinema.org/a/PJlHF0XTJQxy4vG1gwk1JBYsv.svg)(https://asciinema.org/a/PJlHF0XTJQxy4vG1gwk1JBYsv)
 
 ### Сравнение файлов json и yaml/yml в формате stylish
-![asciicast](https://asciinema.org/a/UTS850TgHdX5pXKqOsmV53Ey9.svg)
+[![asciicast](https://asciinema.org/a/UTS850TgHdX5pXKqOsmV53Ey9.svg)](https://asciinema.org/a/UTS850TgHdX5pXKqOsmV53Ey9)
 
 ### Сравнение файлов json и yaml/yml в формате plain
-![asciicast](https://asciinema.org/a/GBorRO2qB9KOYdSKLfyGYrwYi.svg)
+[![asciicast](https://asciinema.org/a/GBorRO2qB9KOYdSKLfyGYrwYi.svg)](https://asciinema.org/a/GBorRO2qB9KOYdSKLfyGYrwYi)
 
 ### Сравнение файлов json и yaml/yml в формате json
-![asciicast](https://asciinema.org/a/m1ol4r9ABcVbrHdV3440BrMDw.svg)
+[![asciicast](https://asciinema.org/a/m1ol4r9ABcVbrHdV3440BrMDw.svg)](https://asciinema.org/a/m1ol4r9ABcVbrHdV3440BrMDw)
